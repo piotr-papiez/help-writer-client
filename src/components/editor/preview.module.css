@@ -55,3 +55,24 @@
 .preview li:hover li {
   background-color: transparent;
 }
+
+
+.preview h1 {
+  padding-top: 2.5rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.preview h2 {
+  padding-top: 2rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.preview h3 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.preview p {
+  padding-top: 0 !important;
+  padding-bottom: 1rem !important;
+}

@@ -15,29 +15,28 @@ body {
 }
 
 v-btn {
-  padding: 0.15rem 0.5rem;
-  background-color: #e6e6fa;
-  border-radius: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 700;
+  padding: 0.1rem 0.3rem;
+  background-color: #e9e9e9;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 v-code {
   padding: 0.15rem 0.3rem;
   background-color: #f2f2f2;
+  border: 1px solid #e6e6e6;
   border-radius: 0.25rem;
   color: #e81e63;
   font-family: var(--font-roboto-mono);
-  font-size: 0.9rem;
+  font-size: 0.75rem;
 }
 
 v-path {
   padding: 0.15rem 0.3rem;
-  background-color: #cbeeff;
-  border-radius: 0.25rem 0.25rem 0 0;
   border-bottom: 1px solid blue;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-style: italic;
 }
 
