@@ -1,0 +1,34 @@
+.button-draggable-element {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem 0.5rem 0.25rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.button-draggable-element:active {
+    cursor: grabbing;
+}
+
+.button-draggable-element:hover {
+    background-color: #c8efff;
+}
+
+.span-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-1px);
+    gap: 0.15rem;
+}
+
+.button-draggable-element span {
+    font-size: 0.9rem;
+}
+
+.tag-icon {
+    font-size: 1.4rem !important;
+}

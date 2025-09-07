@@ -1,0 +1,185 @@
+.drag-indicator {
+  padding: 0 0.5rem 0 0;
+  display: block;
+  width: 100%;
+  cursor: grab;
+}
+
+.drag-indicator:active {
+  cursor: grabbing;
+}
+
+.heading-title {
+  display: flex;
+  align-items: center;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0.5rem;
+}
+
+.tag-icon {
+  font-size: 1.2rem !important;
+  font-weight: 100 !important;
+}
+
+.remove-block-button {
+  display: flex;
+  padding: 0.25rem;
+  aspect-ratio: 1 / 1;
+  align-items: center;
+  border: none;
+  border-radius: 1rem;
+  background-color: #e8e8e8;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.remove-block-button:hover {
+  color: #fff;
+  background-color: #dc3d4b;
+}
+
+.block .h1 {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.25rem 0 0;
+  background-color: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  border-radius: calc(0.125rem + 1px);
+  transition: all 0.1s ease-in-out;
+}
+
+.block:first-of-type div {
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.block:last-of-type div {
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+}
+
+.block .h2 {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.25rem 0 0;
+  background-color: #d9d9e1;
+  border: 1px solid #d9d9e1;
+  border-radius: calc(0.5rem + 1px);
+  transition: all 0.1s ease-in-out;
+}
+
+.block .h3 {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.25rem 0 0;
+  background-color: #d9d9e1;
+  border: 1px solid #d9d9e1;
+  border-radius: calc(0.5rem + 1px);
+  transition: all 0.1s ease-in-out;
+}
+
+.block .p {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.25rem 0 0;
+  background-color: #d9d9e1;
+  border: 1px solid #d9d9e1;
+  border-radius: calc(0.5rem + 1px);
+  transition: all 0.1s ease-in-out;
+}
+
+.block textarea {
+  display: block;
+  max-height: 2.2rem;
+  width: 100%;
+  resize: none;
+  margin: 0;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  background-color: #fefefe;
+  border: none;
+  border-radius: 0 0 0.125rem 0.125rem;
+  overflow-y: hidden;
+}
+
+.block:last-of-type textarea {
+  border-bottom-left-radius: calc(0.75rem - 1px);
+  border-bottom-right-radius: calc(0.75rem - 1px);
+}
+
+.block div:focus-within {
+  outline: none;
+  color: #fff;
+  background-color: #03254c;
+  border-color: #03254c;
+}
+
+.block div:focus-within .remove-block-button {
+  color: #fff;
+  background-color: #03254c;
+}
+
+.block:focus-within .remove-block-button:hover {
+  background-color: #dc3d4b;
+}
+
+.block textarea:focus {
+  max-height: 100%;
+  outline: none;
+}
+
+.block:focus {
+  outline: none;
+}
+
+.block span {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.slot .h1 {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.25rem 0 0;
+  background-color: #c8efff;
+  border: 1px dashed #1a3298;
+  border-radius: calc(0.5rem + 1px);
+  transition: all 0.1s ease-in-out;
+}
+
+.slot textarea {
+  display: block;
+  width: 100%;
+  resize: none;
+  margin: 0;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  background-color: #c8efff;
+  border: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.slot div:focus-within {
+  outline: none;
+  background-color: #ff7f00;
+  border-color: #ff7f00;
+}
+
+.slot textarea:focus {
+  outline: none;
+}
+
+.slot:focus {
+  outline: none;
+}
+
+.slot span {
+  font-size: 0.85rem;
+  font-weight: 600;
+}

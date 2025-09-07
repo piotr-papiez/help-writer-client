@@ -1,0 +1,31 @@
+.button {
+    font-weight: 500;
+    padding: 0 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.button:first-of-type {
+    color: #f7f8f9;
+    background-color: #03254c;
+    border: 1px solid #03254c;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.button:first-of-type:hover {
+    background-color: #121212;
+    border-color: #121212;
+}
+
+.button:last-of-type {
+    background-color: #e8e8e8;
+    border: 1px solid #b1b1b1;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.button:last-of-type:hover {
+    background-color: #d1d1d1;
+}

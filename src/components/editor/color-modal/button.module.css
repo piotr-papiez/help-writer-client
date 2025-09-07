@@ -1,0 +1,7 @@
+.button {
+    width: 1.5rem;
+    aspect-ratio: 1 / 1;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+}

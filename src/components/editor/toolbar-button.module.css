@@ -1,0 +1,31 @@
+.button-standard-format {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    color: #464646;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.button-standard-format:hover {
+    background-color: #ededed;
+}
+
+.button-specific-format {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    color: #464646;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.button-specific-format:hover {
+    background-color: #ffdcff;
+}
