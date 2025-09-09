@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { listContentToHTML } from "../../../../utils/objects-to-html.util.js";
+import { listContentToHTML, ulHTMLToLIST } from "../../../../utils/objects-to-html.util.js";
 import generateId from "../../../../utils/id-generator.util.js";
 
 import styles from "./configurator.module.css";
@@ -11,7 +11,8 @@ import Textarea from "./textarea.component.jsx";
 import Button from "./button.component.jsx";
 
 export default function Configurator({ container, onListInput }) {
-    const [listContent, setListContent] = useState([]);
+    const [listContent, setListContent] = useState(ulHTMLToLIST(container.content));
+    console.log(listContent);
 
     useEffect(() => {
         const listContentHTML = listContentToHTML(listContent);

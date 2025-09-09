@@ -27,3 +27,39 @@ export function listContentToHTML(list) {
 
     return htmlContent.join("");
 }
+
+// Function below to be optimised, verified, and renamed.
+
+export function ulHTMLToLIST(ulHtml) {
+    const wrapped = /^\s*<ul[\s>]/i.test(ulHtml) ? ulHtml : `<ul>${ulHtml}</ul>`;
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(wrapped, "text/html");
+    const rootUl = doc.querySelector("ul");
+    if (!rootUl) return [];
+  
+    const parseLevel = (ulEl, depth = 1) => {
+      return Array.from(ulEl.querySelectorAll(":scope > li")).map(li => {
+        const childUl = li.querySelector(":scope > ul");
+  
+        let content = li.innerHTML;
+        if (childUl) content = content.replace(childUl.outerHTML, "").trim();
+  
+        const node = {
+          id: li.id || undefined,
+          content: content.trim()
+        };
+  
+        if (childUl && depth === 1) {
+          node.secondLevel = Array.from(childUl.querySelectorAll(":scope > li")).map(childLi => ({
+            id: childLi.id || undefined,
+            content: childLi.innerHTML.trim()
+          }));
+        }
+  
+        return node;
+      });
+    };
+  
+    return parseLevel(rootUl, 1);
+  }
+  
