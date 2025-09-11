@@ -75,6 +75,8 @@ export default function Block({ container, onFlatInput, onAddPoint, onListInput,
                         container={container}
                         onAddPoint={onAddPoint}
                         onListInput={onListInput}
+                        onFocus={onFocus}
+                        ref={ref}
                     />
                 )}
             </div>

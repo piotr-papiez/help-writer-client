@@ -10,7 +10,7 @@ import styles from "./configurator.module.css";
 import Textarea from "./textarea.component.jsx";
 import Button from "./button.component.jsx";
 
-export default function Configurator({ container, onListInput }) {
+export default function Configurator({ container, onListInput, onFocus, ref }) {
     const [listContent, setListContent] = useState(ulHTMLToLIST(container.content));
     console.log(listContent);
 
@@ -85,6 +85,8 @@ export default function Configurator({ container, onListInput }) {
                     onListInput={event => onListInput(event, listContentHTML)}
                     onAddIndent={addIndentIntoPoint}
                     onRemove={removePointById}
+                    onFocus={onFocus}
+                    ref={ref}
                 />
             ))}
 

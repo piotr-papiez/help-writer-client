@@ -4,6 +4,7 @@ export default function handleButtonFormatting(event, textareaOnFocusElement, { 
 
         const tag = letter;
         const textarea = textareaOnFocusElement;
+        console.log(textarea);
 
         const start = textarea.selectionStart;
         const end = textarea.selectionEnd;
