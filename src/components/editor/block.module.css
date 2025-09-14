@@ -183,3 +183,16 @@
   font-size: 0.85rem;
   font-weight: 600;
 }
+
+.block {
+  min-height: 3.9rem;
+  overflow-y: hidden;
+}
+
+.block:focus-within {
+  min-height: fit-content;
+}
+
+.block:has(.drag-indicator:active) {
+  min-height: 3.9rem;
+}

@@ -1,27 +1,48 @@
 .list-wrapper {
-    background-color: #fff;
     padding-left: 0.5rem;
+    color: initial !important;
+    background-color: #fff;
+    border-radius: 0 !important;
+}
+
+.list-wrapper:focus-within,
+.buttons-wrapper:focus-within {
+    background-color: #fff !important;
+    border: none !important;
 }
 
 .textarea-wrapper {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+    border-radius: 0 !important;
+}
+
+/* .list-wrapper:hover  {
+    background-color: #f3f4f5;
 }
 
 .list-wrapper:hover textarea {
-    border-color: #e8e8e8;
-}
+    background-color: #f3f4f5;
+} */
 
 .textarea-wrapper-first-level,
 .textarea-wrapper-second-level {
     display: flex;
     position: relative;
     align-items: center;
+    gap: 0.25rem;
 }
 
 .textarea-wrapper-second-level {
-    margin-left: 1.6rem;
+    margin-left: 2rem;
+    border-radius: 0 !important;
+}
+
+.textarea-wrapper-first-level:focus-within,
+.textarea-wrapper-second-level:focus-within {
+    color: initial !important;
+    background-color: #fff !important;
 }
 
 .textarea-wrapper-first-level textarea,
@@ -32,8 +53,9 @@
 
 .textarea-wrapper-first-level textarea:hover,
 .textarea-wrapper-second-level textarea:hover {
-    background-color: #f4f4f4;
-    border-color: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    border-left: none;
+    border-right: none;
 }
 
 .textarea-wrapper-first-level textarea {
@@ -43,14 +65,27 @@
 .buttons-wrapper {
     display: flex;
     position: absolute;
+    height: auto;
     right: 0.5rem;
-    gap: 0.5rem;
+    /* gap: 0.5rem; */
+    border-radius: 0 !important;
+    border: none !important;
+    pointer-events: none;
+}
+
+.buttons-wrapper:hover {
+    background-color: transparent !important;
+}
+
+.buttons-wrapper:active {
+    background-color: #fff !important;
+    border: none !important;
 }
 
 .textarea-wrapper-first-level button,
 .textarea-wrapper-second-level button {
     display: flex;
-    width: 1.6rem;
+    width: auto;
     aspect-ratio: 1 / 1;
     align-items: center;
     justify-content: center;

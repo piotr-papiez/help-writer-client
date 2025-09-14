@@ -9,7 +9,7 @@ export default function Textarea({ onInput, point, onAddIndent, onRemove, onFocu
     return (
         <div className={styles["list-wrapper"]}>
             <div className={styles["textarea-wrapper-first-level"]}>
-                <span className="material-symbols-rounded">radio_button_checked</span>
+                <span>●</span>
                 <TextareaAutosize
                     data-textarea={point.id}
                     className={styles["textarea-first-level"]}
@@ -20,7 +20,7 @@ export default function Textarea({ onInput, point, onAddIndent, onRemove, onFocu
                     ref={element => { ref.current[point.id] = element }}
                 />
 
-                <div className={styles["buttons-wrapper"]}>
+                {/* <div className={styles["buttons-wrapper"]}> */}
                     <Button
                         id={point.id}
                         onClick={() => onAddIndent(point.id)}
@@ -31,16 +31,15 @@ export default function Textarea({ onInput, point, onAddIndent, onRemove, onFocu
                         onClick={() => onRemove(point.id)}
                         content="close"
                     />
-                </div>
+                {/* </div> */}
             </div>
-
 
             {point?.secondLevel?.map(second => (
                 <div
                     key={`second-level-${second.id}`}
                     className={styles["textarea-wrapper-second-level"]}
                 >
-                    <span className="material-symbols-rounded">radio_button_unchecked</span>
+                    <span>○</span>
                     <TextareaAutosize
                         data-textarea={second.id}
                         className={styles["textarea-second-level"]}
@@ -51,13 +50,13 @@ export default function Textarea({ onInput, point, onAddIndent, onRemove, onFocu
                         ref={element => { ref.current[second.id] = element }}
                     />
 
-                    <div className={styles["buttons-wrapper"]}>
+                    {/* <div className={styles["buttons-wrapper"]}> */}
                         <Button
                             id={second.id}
                             onClick={() => onRemove(second.id)}
                             content="close"
                         />
-                    </div>
+                    {/* </div>                     */}
                 </div>
             ))}
         </div>

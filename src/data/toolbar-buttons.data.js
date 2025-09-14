@@ -8,7 +8,7 @@ export const DRAGGABLE_ELEMENTS_BUTTONS = [
     { type: "draggable", tag: "ol", content: "format_list_numbered", title: "Lista numerowana" },
     { type: "draggable", tag: "table", content: "table", title: "Tabela" },
     { type: "draggable", tag: "img", content: "image", title: "Obraz" },
-    { type: "draggable", tag: "video", content: "live_tv", title: "Film" },
+    { type: "draggable", tag: "iframe", content: "live_tv", title: "Film" },
     { type: "draggable", tag: "div", content: "info", title: "Ramka informacyjna" },
     { type: "draggable", tag: "div", content: "warning", title: "Ramka ostrzegawcza" },
     { type: "draggable", tag: "div", content: "release_alert", title: "Ramka zakazu/błędu" },
