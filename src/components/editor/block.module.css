@@ -63,36 +63,6 @@
   border-bottom-right-radius: 0.75rem;
 }
 
-.block .h2 {
-  display: grid;
-  gap: 0.25rem;
-  padding: 0.25rem 0 0;
-  background-color: #d9d9e1;
-  border: 1px solid #d9d9e1;
-  border-radius: calc(0.5rem + 1px);
-  transition: all 0.1s ease-in-out;
-}
-
-.block .h3 {
-  display: grid;
-  gap: 0.25rem;
-  padding: 0.25rem 0 0;
-  background-color: #d9d9e1;
-  border: 1px solid #d9d9e1;
-  border-radius: calc(0.5rem + 1px);
-  transition: all 0.1s ease-in-out;
-}
-
-.block .p {
-  display: grid;
-  gap: 0.25rem;
-  padding: 0.25rem 0 0;
-  background-color: #d9d9e1;
-  border: 1px solid #d9d9e1;
-  border-radius: calc(0.5rem + 1px);
-  transition: all 0.1s ease-in-out;
-}
-
 .block textarea {
   display: block;
   max-height: 2.2rem;
@@ -184,15 +154,19 @@
   font-weight: 600;
 }
 
-.block {
-  min-height: 3.9rem;
+.block .h1{
+  height: 3.9rem;
   overflow-y: hidden;
 }
 
-.block:focus-within {
-  min-height: fit-content;
+.block .h1:focus-within {
+  height: fit-content;
 }
 
-.block:has(.drag-indicator:active) {
-  min-height: 3.9rem;
+.block .h1:has(.drag-indicator:active) {
+  height: 3.9rem;
+}
+
+.block:has(.drag-indicator:active) textarea:not(textarea:first-of-type) {
+  display: none;
 }

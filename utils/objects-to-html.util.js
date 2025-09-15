@@ -13,44 +13,58 @@
 // }
 
 export function containersToHTML(containers) {
-  return (
-    containers
-      ?.map(item => {
-        if (["info", "warning", "release_alert"].includes(item.icon)) {
-          return `<${item.tag} id="${item.id}" class=${item.icon}>${item.content}</${item.tag}>`;
-        }
+  const listItemsDeepLinksRaw = containers?.map(item => {
+    if (["h1", "h2", "h3"].includes(item.tag)) {
+      return `<li><a href="#${item.id}">${item.content}</a></li>`;
+    } else {
+      return;
+    }
+  }) || [];
 
-        if (item.tag === "img") {
-          return `<${item.tag} id="${item.id}" src="${item.content}" />`
-        }
+  const listItemsDeepLinks = listItemsDeepLinksRaw
+    .filter(item => item !== undefined)
+    .join("\n");
 
-        if (item.tag === "iframe") {
-          return `
-            <${item.tag}
-              id="${item.id}"
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/${item.content}"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer;
-              autoplay;
-              clipboard-write;
-              encrypted-media;
-              gyroscope;
-              picture-in-picture;
-              web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen=""
-            >
-            </${item.tag}>
-          `;
-        }
+  const deepLinks = `<ul class="toc">${listItemsDeepLinks}</ul>`;
 
-        return `<${item.tag} id="${item.id}">${item.content}</${item.tag}>`
-      })
-      .join("\n")
-  );
+  const htmlContent = containers
+    ?.map(item => {
+      if (["info", "warning", "release_alert"].includes(item.icon)) {
+        return `<${item.tag} id="${item.id}" class=${item.icon}>${item.content}</${item.tag}>`;
+      }
+
+      if (item.tag === "img") {
+        return `<${item.tag} id="${item.id}" src="${item.content}" />`
+      }
+
+      if (item.tag === "iframe") {
+        return `
+        <${item.tag}
+          id="${item.id}"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/${item.content}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen=""
+        >
+        </${item.tag}>
+      `;
+      }
+
+      return `<${item.tag} id="${item.id}">${item.content}</${item.tag}>`
+    })
+    .join("\n")
+
+  return `${deepLinks}\n${htmlContent}`;
 }
 
 export function listContentToHTML(list) {

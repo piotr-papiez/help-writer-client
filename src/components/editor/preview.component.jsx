@@ -4,9 +4,9 @@ export default function Preview({ htmlContent }) {
     
 
     function textareaFocusFromPreview(event) {
-        const element = event.target.tagName === "li" ? event.target.id : event.target.closest("[id]");
-        const elementId = element.id;
-        const textareaToFocus = document.querySelector(`[data-textarea="${elementId}"]`);
+        const element = event.target.tagName === "li" ? event.target.id : event.target.closest("[id]") || undefined;
+        const elementId = element?.id || undefined;
+        const textareaToFocus = elementId ? document.querySelector(`[data-textarea="${elementId}"]`) : undefined;
         textareaToFocus?.focus();
     }
 

@@ -83,3 +83,38 @@ ul {
 .release_alert:hover {
   border: 1px dashed #263238 !important;
 }
+
+.toc::before {
+  content: "Spis treści";
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.toc {
+  padding: 1rem;
+  background-color: #f3f4f5;
+  border: 2px solid #e8e8e8 !important;
+  margin-bottom: 1.2rem;
+}
+
+.toc:hover {
+  background-color: #f3f4f5 !important;
+}
+
+.toc li {
+  margin-left: 2rem;
+}
+
+.toc li:hover {
+  background-color: transparent !important;
+}
+
+.toc a {
+  color: initial;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.toc a:hover {
+  color: #0080ff;
+}

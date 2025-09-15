@@ -18,14 +18,6 @@
     border-radius: 0 !important;
 }
 
-/* .list-wrapper:hover  {
-    background-color: #f3f4f5;
-}
-
-.list-wrapper:hover textarea {
-    background-color: #f3f4f5;
-} */
-
 .textarea-wrapper-first-level,
 .textarea-wrapper-second-level {
     display: flex;
@@ -53,9 +45,7 @@
 
 .textarea-wrapper-first-level textarea:hover,
 .textarea-wrapper-second-level textarea:hover {
-    border: 1px solid #e8e8e8;
-    border-left: none;
-    border-right: none;
+    border-bottom: 1px solid #e8e8e8;
 }
 
 .textarea-wrapper-first-level textarea {

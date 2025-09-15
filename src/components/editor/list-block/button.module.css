@@ -1,11 +1,31 @@
-.button {
+.add-button {
     display: flex;
     align-items: center;
     width: auto;
     aspect-ratio: 1 / 1;
-    background-color: #f7f8f9;
+    background-color: #fff;
+    border: none;
+    border-radius: 1rem;
+    margin: 0.25rem 0.25rem 0.25rem 0.5rem;
+    pointer-events: all;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.add-button:hover {
+    background-color: #e8e8e8;
+}
+
+.textarea-button {
+    display: flex;
+    align-items: center;
+    width: auto;
+    aspect-ratio: 1 / 1;
+    background-color: transparent;
     border: none;
     border-radius: 1rem;
     margin: 0.25rem;
     pointer-events: all;
+    cursor: pointer;
+    transition: all 0.2s !important;
 }

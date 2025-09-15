@@ -91,6 +91,7 @@ export default function Configurator({ container, onListInput, onFocus, ref }) {
             ))}
 
             <Button
+                className="add-button"
                 onClick={addPoint}
                 content="add"
             />

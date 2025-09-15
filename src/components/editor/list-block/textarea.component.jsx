@@ -23,11 +23,13 @@ export default function Textarea({ onInput, point, onAddIndent, onRemove, onFocu
                 {/* <div className={styles["buttons-wrapper"]}> */}
                     <Button
                         id={point.id}
+                        className="textarea-button"
                         onClick={() => onAddIndent(point.id)}
                         content="subdirectory_arrow_right"
                     />
                     <Button
                         id={point.id}
+                        className="textarea-button"
                         onClick={() => onRemove(point.id)}
                         content="close"
                     />
@@ -53,6 +55,7 @@ export default function Textarea({ onInput, point, onAddIndent, onRemove, onFocu
                     {/* <div className={styles["buttons-wrapper"]}> */}
                         <Button
                             id={second.id}
+                            className="textarea-button"
                             onClick={() => onRemove(second.id)}
                             content="close"
                         />
