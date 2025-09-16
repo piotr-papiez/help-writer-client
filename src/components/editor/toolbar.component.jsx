@@ -69,7 +69,7 @@ export default function Toolbar({ containers, textareaOnFocusElement, handleCrea
                     />
                 ))}
 
-                <hr className={styles.hr} />
+                {/* <hr className={styles.hr} /> */}
 
                 {COLOR_FORMAT_BUTTONS.map(button => (
                     <ColorToolbarButton

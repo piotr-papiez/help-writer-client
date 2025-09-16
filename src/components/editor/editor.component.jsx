@@ -10,6 +10,7 @@ import handleDragEnd from "../../../lib/handle-drag-end.lib.js";
 import getContainerIndex from "../../../utils/get-container-index.util.js";
 import { containersToHTML } from "../../../utils/objects-to-html.util.js";
 import generateId from "../../../utils/id-generator.util.js";
+import textToSymbol from "../../../utils/text-to-symbols.util.js";
 import styles from "./editor.module.css";
 
 import ActionButton from "./action-button.component.jsx";
@@ -42,8 +43,10 @@ export default function Editor({ articleId, contentString }) {
     function handleFlatInput(event) {
         const { dataset, value } = event.target;
 
+        const formattedValue = textToSymbol(value);
+
         setContainers(prevContent => prevContent.map(
-            item => item.id === dataset.textarea ? { ...item, content: value } : item
+            item => item.id === dataset.textarea ? { ...item, content: formattedValue } : item
         ));
     }
 

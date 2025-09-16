@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { listContentToHTML, ulHTMLToLIST } from "../../../../utils/objects-to-html.util.js";
 import generateId from "../../../../utils/id-generator.util.js";
+import textToSymbol from "../../../../utils/text-to-symbols.util.js";
 
 import styles from "./configurator.module.css";
 
@@ -27,9 +28,10 @@ export default function Configurator({ container, onListInput, onFocus, ref }) {
     }
 
     function handleInput(value, id) {
+        const formattedValue = textToSymbol(value);
         const setInput = list =>
             list.map(item => {
-                if (item.id === id) return { ...item, content: value };
+                if (item.id === id) return { ...item, content: formattedValue };
 
                 if (item.secondLevel) return { ...item, secondLevel: setInput(item.secondLevel) };
 
