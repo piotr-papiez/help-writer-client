@@ -2,6 +2,7 @@ export const DRAGGABLE_ELEMENTS_BUTTONS = [
     { type: "draggable", tag: "h1", content: "format_h1", title: "Nagłówek 1" },
     { type: "draggable", tag: "h2", content: "format_h2", title: "Nagłówek 2" },
     { type: "draggable", tag: "h3", content: "format_h3", title: "Nagłówek 3" },
+    { type: "draggable", tag: "h4", content: "format_h4", title: "Nagłówek 4" },
     { type: "draggable", tag: "p", content: "short_text", title: "Akapit" },
     { type: "draggable", tag: "div", content: "rectangle", title: "Kontener (niesemantyczny)" },
     { type: "draggable", tag: "ul", content: "format_list_bulleted", title: "Lista punktowana" },
