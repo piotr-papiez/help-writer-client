@@ -18,7 +18,7 @@ import Toolbar from "./toolbar.component.jsx";
 import Preview from "./preview.component.jsx";
 import Canvas from "./canvas.component.jsx";
 
-export default function Editor({ articleId, contentString }) {
+export default function Editor({ articleId, articleTitle, contentString }) {
     const [containers, setContainers] = useState(null);
     const [containerSlot, setContainerSlot] = useState(null);
     const [textareaOnFocusId, setTextareaOnFocusId] = useState(null);
@@ -142,7 +142,7 @@ export default function Editor({ articleId, contentString }) {
             >
                 <div className={styles.editor}>
                     <div className={styles.header}>
-                        <h2>Temu — Instrukcja konfiguracji</h2>
+                        <h2>{articleTitle}</h2>
 
                         <div className={styles["header-buttons-wrapper"]}>
                             <ActionButton

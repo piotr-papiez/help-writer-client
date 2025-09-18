@@ -35,6 +35,7 @@ export default function EditArticlePage() {
     return (
         <Editor
             articleId={articleId}
+            articleTitle={article.title}
             contentString={article.content}
         />
     );
