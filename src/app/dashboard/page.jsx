@@ -2,14 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import NewArticleDialog from "@/components/dashboard/new-article-dialog.component.jsx";
+import Dashboard from "@/components/dashboard/dashboard.component.jsx";
 
 const SERVER_URI = process.env.NEXT_PUBLIC_SERVER_URI;
 
 export default function DashboardPage() {
     const [articlesList, setArticlesList] = useState([]);
-
-    const dialogRef = useRef(null);
 
     useEffect(() => {
         async function fetchArticles() {
@@ -32,34 +30,9 @@ export default function DashboardPage() {
         fetchArticles();
     }, []);
 
-    function openDialog() {
-        dialogRef.current.showModal();
-    }
-
-    function closeDialog() {
-        dialogRef.current.close();
-    }
-
     return (
-        <>
-            <button
-                onClick={openDialog}
-            >
-                Stwórz artykuł
-            </button>
-
-            {articlesList.length > 0 && articlesList.map(article => (
-                <div key={article._id}>
-                    <a href={`/edit/${article._id}`}><h3>{article.title}</h3></a>
-                    <p>{article.creationDate}</p>
-                    <p>{article.lastModificationDate}</p>
-                </div>
-            ))}
-
-            <NewArticleDialog
-                ref={dialogRef}
-                onCancel={closeDialog}
-            />
-        </>
+        <Dashboard
+            articlesList={articlesList}
+        />
     );
 }

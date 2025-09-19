@@ -1,0 +1,117 @@
+.dashboard {
+    display: grid;
+    max-width: 1280px;
+    margin: 1rem auto;
+    gap: 1rem;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toolbar h2 {
+    margin-left: 4px;
+}
+
+.toolbar button {
+    display: flex;
+    margin-right: 4px;
+    width: auto;
+    aspect-ratio: 1 / 1;
+    align-items: center;
+    padding: 0.5rem;
+    color: #fff;
+    background-color: #03254c;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.toolbar button:hover {
+    background-color: #121212;
+}
+
+.articles-list {
+    display: grid;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0px 2px 4px 0px #b1b1b1;
+}
+
+.article-item {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    transition: all 0.3s;
+}
+
+.article-item:hover {
+    background-color: #f3f4f5;
+}
+
+.article-item:first-of-type {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.article-item:last-of-type {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.article-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0;
+    height: 1px;
+    background-color: #e8e8e8;
+    pointer-events: none;
+}
+
+.article-item h3,
+.article-item a {
+    display: inline;
+    width: fit-content;
+    color: initial;
+    text-decoration: none;
+}
+
+.article-item p {
+    font-size: 0.85rem;
+}
+
+.article-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.article-actions button,
+.article-actions a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #e4e4e4;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.article-actions button:hover,
+.article-actions a:hover {
+    background-color: #d1d1d1;
+}
+
+.article-actions button span,
+.article-actions a span {
+    font-size: 1rem;
+}

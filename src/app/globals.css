@@ -10,7 +10,7 @@ textarea {
   line-height: initial;
 }
 
-img, iframe {
+a, img, iframe {
   width: 100%;
 }
 
