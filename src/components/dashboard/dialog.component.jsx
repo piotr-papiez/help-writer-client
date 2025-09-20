@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-
 import { useRouter } from "next/navigation";
+
+import { createArticle, copyArticle, deleteArticle } from "../../../utils/dashboard-fetching.util.js";
+import styles from "./dialog.module.css";
 
 import { AddArticleDialog, CopyArticleDialog, DeleteArticleDialog } from "./dialog-variants.component.jsx";
 
-import { createArticle, copyArticle } from "../../../utils/dashboard-fetching.util.js";
-
 const SERVER_URI = process.env.NEXT_PUBLIC_SERVER_URI;
 
-export default function Dialog({ articleId, onCancel, dialogType, ref }) {
+export default function Dialog({ onClose, dialogType, handleDeleteArticle, ref }) {
     const [articleTitle, setArticleTitle] = useState("");
 
     const router = useRouter();
@@ -20,13 +20,13 @@ export default function Dialog({ articleId, onCancel, dialogType, ref }) {
     }
 
     return (
-        <dialog ref={ref}>
+        <dialog className={styles.dialog} ref={ref}>
             {dialogType?.content === "add" && (
                 <AddArticleDialog
                     articleTitle={articleTitle}
                     handleInput={handleInput}
                     handleCreate={() => createArticle(articleTitle, SERVER_URI, router)}
-                    handleCancel={onCancel}
+                    handleCancel={onClose}
                 />
             )}
 
@@ -34,31 +34,24 @@ export default function Dialog({ articleId, onCancel, dialogType, ref }) {
                 <CopyArticleDialog
                     articleTitle={articleTitle}
                     handleInput={handleInput}
-                    handleCreate={() => copyArticle(dialogType.articleId, articleTitle, SERVER_URI, router)}
-                    handleCancel={onCancel}
+                    handleCopy={() => copyArticle(dialogType.articleId, articleTitle, SERVER_URI, router)}
+                    handleCancel={onClose}
                 />
             )}
 
             {dialogType?.content === "delete" && (
                 <DeleteArticleDialog
-                    articleTitle={articleTitle}
                     handleInput={handleInput}
-                    handleCreate={() => createArticle(articleTitle, SERVER_URI, router)}
-                    handleCancel={onCancel}
+                    handleDelete={
+                        () => {
+                            deleteArticle(dialogType.articleId, SERVER_URI);
+                            handleDeleteArticle(dialogType.articleId);
+                            onClose();
+                        }
+                    }
+                    handleCancel={onClose}
                 />
             )}
-
-            {/* <h3>Stwórz artykuł</h3>
-            <div>
-                <input
-                    type="text"
-                    name="title"
-                    value={articleTitle}
-                    onChange={event => handleInput(event)}
-                />
-                <button onClick={createArticle}>Stwórz artykuł</button>
-                <button onClick={onCancel}>Anuluj</button>
-            </div> */}
         </dialog>
     );
 }

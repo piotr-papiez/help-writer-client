@@ -9,7 +9,7 @@ import styles from "./dashboard.module.css";
 import Dialog from "./dialog.component.jsx";
 import ItemButton from "./item-button.component.jsx";
 
-export default function Dashboard({ articlesList }) {
+export default function Dashboard({ articlesList, handleDeleteArticle }) {
     const [openedDialog, setOpenedDialog] = useState(null);
 
     const dialogRef = useRef(null);
@@ -71,7 +71,8 @@ export default function Dashboard({ articlesList }) {
 
             <Dialog
                 dialogType={openedDialog}
-                onCancel={closeDialog}
+                onClose={closeDialog}
+                handleDeleteArticle={handleDeleteArticle}
                 ref={dialogRef}
             />
         </div>

@@ -8,6 +8,7 @@ const SERVER_URI = process.env.NEXT_PUBLIC_SERVER_URI;
 
 export default function DashboardPage() {
     const [articlesList, setArticlesList] = useState([]);
+    const [deletedArticle, setDeletedArticle] = useState(null);
 
     useEffect(() => {
         async function fetchArticles() {
@@ -28,11 +29,16 @@ export default function DashboardPage() {
         }
 
         fetchArticles();
-    }, []);
+    }, [deletedArticle]);
+
+    function handleDeleteArticle(articleId) {
+        setDeletedArticle(articleId);
+    }
 
     return (
         <Dashboard
             articlesList={articlesList}
+            handleDeleteArticle={handleDeleteArticle}
         />
     );
 }

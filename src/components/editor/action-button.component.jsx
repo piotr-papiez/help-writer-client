@@ -20,8 +20,6 @@ export default function ActionButton({ content, articleId, containers }) {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    title: "TYTUŁ",
-                    lastModificationDate: "2025-08-17T22:00:00.000+00:00",
                     content: JSON.stringify(containers)
                 })
             });

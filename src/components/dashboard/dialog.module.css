@@ -1,0 +1,65 @@
+.dialog {
+    margin: auto;
+    width: 24rem;
+    padding: 1.5rem 1rem 0.5rem;
+    gap: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0px 2px 4px 0px #b1b1b1;
+}
+
+.dialog h3 {
+    margin: 0.5rem 0 1rem 4px;
+}
+
+.dialog p {
+    margin: 0.5rem 0 2rem 4px;
+}
+
+.dialog input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 2rem;
+}
+
+.dialog input:focus {
+    outline: none;
+    border-color: #121212;
+}
+
+.dialog div {
+    display: flex;
+    justify-content: right;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.dialog button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 2rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dialog button:first-of-type {
+    color: #f7f8f9;
+    background-color: #03254c;
+    border: 1px solid #03254c;
+}
+
+.dialog button:first-of-type:hover {
+    background-color: #121212;
+}
+
+.dialog button:last-of-type {
+    background-color: #f7f8f9;
+    border: 1px solid #e8e8e8;
+}
+
+.dialog button:last-of-type:hover {
+    background-color: #e8e8e8;
+}
+

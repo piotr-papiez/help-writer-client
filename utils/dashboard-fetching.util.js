@@ -40,3 +40,18 @@ export async function copyArticle(articleId, articleTitle, SERVER_URI, router) {
         console.error(error);
     }
 }
+
+export async function deleteArticle(articleId, SERVER_URI) {
+    try {
+        const response = await fetch(`${SERVER_URI}/api/articles/${articleId}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+        });
+
+        if (response.status === 404) return alert("no article");
+        
+        return;
+    } catch (error) {
+        console.log(error);
+    }
+}

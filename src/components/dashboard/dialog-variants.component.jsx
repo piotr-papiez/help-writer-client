@@ -1,14 +1,15 @@
 export function AddArticleDialog({ articleTitle, handleInput, handleCreate, handleCancel }) {
     return (
         <>
-            <h3>Stwórz artykuł</h3>
+            <h3>Nowy artykuł</h3>
+            <input
+                type="text"
+                name="title"
+                placeholder="Wpisz tytuł…"
+                value={articleTitle}
+                onChange={event => handleInput(event)}
+            />
             <div>
-                <input
-                    type="text"
-                    name="title"
-                    value={articleTitle}
-                    onChange={event => handleInput(event)}
-                />
                 <button onClick={handleCreate}>Stwórz artykuł</button>
                 <button onClick={handleCancel}>Anuluj</button>
             </div>
@@ -16,32 +17,33 @@ export function AddArticleDialog({ articleTitle, handleInput, handleCreate, hand
     );
 }
 
-export function CopyArticleDialog({ articleTitle, handleInput, handleCreate, handleCancel }) {
+export function CopyArticleDialog({ articleTitle, handleInput, handleCopy, handleCancel }) {
     return (
         <>
             <h3>Kopiuj artykuł</h3>
+            <input
+                type="text"
+                name="title"
+                placeholder="Wpisz tytuł nowego artykułu…"
+                value={articleTitle}
+                onChange={event => handleInput(event)}
+            />
             <div>
-                <input
-                    type="text"
-                    name="title"
-                    value={articleTitle}
-                    onChange={event => handleInput(event)}
-                />
-                <button onClick={handleCreate}>Kopiuj artykuł</button>
+                <button onClick={handleCopy}>Kopiuj artykuł</button>
                 <button onClick={handleCancel}>Anuluj</button>
             </div>
         </>
     );
 }
 
-export function DeleteArticleDialog({ articleTitle, handleInput, handleCreate, handleCancel }) {
+export function DeleteArticleDialog({ handleDelete, handleCancel }) {
     return (
         <>
             <h3>Usuń artykuł</h3>
             <p>Czy na pewno chcesz usunąć ten artykuł?</p>
             <div>
-                
-                <button onClick={handleCreate}>Usuń artykuł</button>
+
+                <button onClick={handleDelete}>Usuń bezpowrotnie</button>
                 <button onClick={handleCancel}>Anuluj</button>
             </div>
         </>
