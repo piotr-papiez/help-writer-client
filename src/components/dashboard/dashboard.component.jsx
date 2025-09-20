@@ -14,8 +14,8 @@ export default function Dashboard({ articlesList }) {
 
     const dialogRef = useRef(null);
 
-    function openDialog(content) {
-        setOpenedDialog(content);
+    function openDialog(articleId, content) {
+        setOpenedDialog({ articleId, content });
         dialogRef.current.showModal();
     }
 
@@ -49,18 +49,20 @@ export default function Dashboard({ articlesList }) {
                         <div className={styles["article-actions"]}>
                             <ItemButton
                                 content="edit"
-                                articleId={`/edit/${article._id}`}
                                 title="Edytuj"
+                                articleId={article._id}
                             />
                             <ItemButton
                                 content="content_copy"
                                 title="Kopiuj"
                                 openDialog={openDialog}
+                                articleId={article._id}
                             />
                             <ItemButton
                                 content="delete"
                                 title="Usuń"
                                 openDialog={openDialog}
+                                articleId={article._id}
                             />
                         </div>
                     </div>

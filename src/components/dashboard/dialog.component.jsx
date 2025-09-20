@@ -6,11 +6,11 @@ import { useRouter } from "next/navigation";
 
 import { AddArticleDialog, CopyArticleDialog, DeleteArticleDialog } from "./dialog-variants.component.jsx";
 
-import { createArticle } from "../../../utils/dashboard-fetching.util.js";
+import { createArticle, copyArticle } from "../../../utils/dashboard-fetching.util.js";
 
 const SERVER_URI = process.env.NEXT_PUBLIC_SERVER_URI;
 
-export default function Dialog({ onCancel, dialogType, ref }) {
+export default function Dialog({ articleId, onCancel, dialogType, ref }) {
     const [articleTitle, setArticleTitle] = useState("");
 
     const router = useRouter();
@@ -21,7 +21,7 @@ export default function Dialog({ onCancel, dialogType, ref }) {
 
     return (
         <dialog ref={ref}>
-            {dialogType === "add" && (
+            {dialogType?.content === "add" && (
                 <AddArticleDialog
                     articleTitle={articleTitle}
                     handleInput={handleInput}
@@ -30,16 +30,16 @@ export default function Dialog({ onCancel, dialogType, ref }) {
                 />
             )}
 
-            {dialogType === "content_copy" && (
+            {dialogType?.content === "content_copy" && (
                 <CopyArticleDialog
                     articleTitle={articleTitle}
                     handleInput={handleInput}
-                    handleCreate={() => createArticle(articleTitle, SERVER_URI, router)}
+                    handleCreate={() => copyArticle(dialogType.articleId, articleTitle, SERVER_URI, router)}
                     handleCancel={onCancel}
                 />
             )}
 
-            {dialogType === "delete" && (
+            {dialogType?.content === "delete" && (
                 <DeleteArticleDialog
                     articleTitle={articleTitle}
                     handleInput={handleInput}
