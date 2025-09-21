@@ -1,8 +1,6 @@
 import styles from "./preview.module.css";
 
 export default function Preview({ htmlContent }) {
-    
-
     function textareaFocusFromPreview(event) {
         const element = event.target.tagName === "li" ? event.target.id : event.target.closest("[id]") || undefined;
         const elementId = element?.id || undefined;

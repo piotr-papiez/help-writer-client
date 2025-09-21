@@ -10,7 +10,13 @@ textarea {
   line-height: initial;
 }
 
-a, img, iframe {
+img, iframe {
+  width: 100%;
+}
+
+.image-link {
+  display: inline-block;
+  height: auto;
   width: 100%;
 }
 

@@ -34,7 +34,7 @@ export function containersToHTML(containers) {
       }
 
       if (item.tag === "img") {
-        return `<a href="${item.content}"><${item.tag} id="${item.id}" src="${item.content}" alt="Zrzut ekranu" /></a>`
+        return `<a class="image-link" href="${item.content}"><${item.tag} id="${item.id}" src="${item.content}" alt="Zrzut ekranu" /></a>`
       }
 
       if (item.tag === "iframe") {
