@@ -13,7 +13,6 @@ import Button from "./button.component.jsx";
 
 export default function Configurator({ container, onListInput, onFocus, ref }) {
     const [listContent, setListContent] = useState(ulHTMLToLIST(container.content));
-    console.log(listContent);
 
     useEffect(() => {
         const listContentHTML = listContentToHTML(listContent);

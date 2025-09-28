@@ -115,7 +115,7 @@ export default function Editor({ articleId, articleTitle, contentString }) {
             } else {
                 newContainers.push(createdContainer);
             }
-            console.log(containers);
+            
             return newContainers;
         });
 
