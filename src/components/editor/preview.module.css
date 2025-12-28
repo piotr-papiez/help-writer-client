@@ -28,10 +28,6 @@
   margin-right: auto;
 }
 
-/* .preview iframe {
-  display: i;
-} */
-
 .preview > *:not(ul):not(li) {
   padding: 0 1rem;
   border: 1px dashed transparent;
