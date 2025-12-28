@@ -3,14 +3,17 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { createArticle, copyArticle, deleteArticle } from "../../../utils/dashboard-fetching.util.js";
+import { createArticle, copyArticle, deleteArticle, saveArticle } from "../../../utils/dashboard-fetching.util.js";
 import styles from "./dialog.module.css";
 
-import { AddArticleDialog, CopyArticleDialog, DeleteArticleDialog } from "./dialog-variants.component.jsx";
+import {
+    AddArticleDialog, CopyArticleDialog,
+    DeleteArticleDialog, SaveArticleDialog
+} from "./dialog-variants.component.jsx";
 
 const SERVER_URI = process.env.NEXT_PUBLIC_SERVER_URI;
 
-export default function Dialog({ onClose, dialogType, handleDeleteArticle, ref }) {
+export default function Dialog({ onClose, dialogType, containers, handleDeleteArticle, ref }) {
     const [articleTitle, setArticleTitle] = useState("");
 
     const router = useRouter();
@@ -50,6 +53,19 @@ export default function Dialog({ onClose, dialogType, handleDeleteArticle, ref }
                         }
                     }
                     handleCancel={onClose}
+                />
+            )}
+
+            {dialogType?.content === "save" && (
+                <SaveArticleDialog 
+                handleSave={
+                    () => {
+                        saveArticle(dialogType.articleId, containers, SERVER_URI);
+                        onClose();
+                        window.location.href = "/dashboard";
+                    }
+                }
+                handleCancel={onClose}
                 />
             )}
         </dialog>

@@ -1,3 +1,5 @@
+import styles from "./dialog-variants.module.css";
+
 export function AddArticleDialog({ articleTitle, handleInput, handleCreate, handleCancel }) {
     return (
         <>
@@ -48,4 +50,22 @@ export function DeleteArticleDialog({ handleDelete, handleCancel }) {
             </div>
         </>
     );
+}
+
+export function SaveArticleDialog({ handleSave, handleCancel }) {
+    return (
+        <>
+            <div className={styles["header-wrapper"]}>
+                <h3>Opuść edycję</h3>
+                <button className={styles["close-button"]} onClick={handleCancel}>
+                    <span className="material-symbols-rounded">close</span>
+                </button>
+            </div>
+            <p>Czy chcesz zapisać zmiany przed wyjściem?</p>
+            <div>
+                <button className={styles["choice-button"]} onClick={handleSave}>Zapisz</button>
+                <a className={styles["choice-button"]} href="/dashboard">Odrzuć zmiany</a>
+            </div>
+        </>
+    )
 }

@@ -1,0 +1,45 @@
+.header-wrapper {
+    justify-content: space-between !important;
+}
+
+.close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem !important;
+    color: #121212 !important;
+    border: none !important;
+    background-color: transparent !important;
+    transition: all 0.3s;
+}
+
+.close-button:hover {
+    background-color: #e8e8e8 !important;
+}
+
+.close-button span {
+    font-size: 1rem;
+}
+
+.choice-button {
+    background-color: #f7f8f9 !important;
+    border: 1px solid #e8e8e8 !important;
+    color: #121212 !important;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 2rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.8rem;
+}
+
+.choice-button:hover {
+    background-color: #e8e8e8 !important;
+}

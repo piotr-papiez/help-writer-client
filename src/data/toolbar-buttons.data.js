@@ -32,3 +32,7 @@ export const SPECIFIC_FORMAT_BUTTONS = [
     { type: "specific", letter: "c", content: "code", title: "Kod (Shift+Alt+C)" },
     { type: "specific", letter: "p", content: "steppers", title: "Ścieżka (Shift+Alt+P)" }
 ];
+
+export const ELEMENTS_BUTTONS = [
+    { type: "elements", letter: "e", content: "html", title: "Elementy HTML" }
+];

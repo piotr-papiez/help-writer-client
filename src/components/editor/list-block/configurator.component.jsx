@@ -11,7 +11,7 @@ import styles from "./configurator.module.css";
 import Textarea from "./textarea.component.jsx";
 import Button from "./button.component.jsx";
 
-export default function Configurator({ container, onListInput, onFocus, ref }) {
+export default function Configurator({ container, onListInput, onFocus, setContainers, ref }) {
     const [listContent, setListContent] = useState(ulHTMLToLIST(container.content));
 
     useEffect(() => {
@@ -37,7 +37,7 @@ export default function Configurator({ container, onListInput, onFocus, ref }) {
                 return item;
             })
 
-        setListContent(prev => setInput(prev));
+        setListContent(prev => setInput(prev)); console.log(listContent);
     }
 
     function addIndentIntoPoint(pointId) {
@@ -87,6 +87,7 @@ export default function Configurator({ container, onListInput, onFocus, ref }) {
                     onAddIndent={addIndentIntoPoint}
                     onRemove={removePointById}
                     onFocus={onFocus}
+                    setListContent={setListContent}
                     ref={ref}
                 />
             ))}

@@ -3,7 +3,7 @@
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
-import handleButtonFormatting from "../../../utils/handle-button-formatting.util.js";
+import { scrollToBottom } from "../../../utils/scroll-item-to.util";
 
 import styles from "./draggable-toolbar-button.module.css";
 
@@ -27,7 +27,10 @@ export default function DraggableToolbarButton({ className, content, handleCreat
             title={tag.title}
             id={`${tag.type}-${tag.content}`}
             className={styles[className]}
-            onClick={() => handleCreateContainer(tag.tag, tag.content)}
+            onClick={() => {
+                handleCreateContainer(tag.tag, tag.content);
+                scrollToBottom("canvas");
+            }}
         >
             <div className={styles["span-container"]}>
                 <span className={"material-symbols-rounded"}>drag_indicator</span>

@@ -27,7 +27,12 @@ export default function Dashboard({ articlesList, handleDeleteArticle }) {
     return (
         <div className={styles.dashboard}>
             <div className={styles.toolbar}>
-                <h2>Help Writer</h2>
+                <h2>
+                    Help Writer
+                    <span>
+                        v.1.1
+                    </span>
+                </h2>
                 <ItemButton
                     content="add"
                     openDialog={openDialog}

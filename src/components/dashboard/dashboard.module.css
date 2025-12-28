@@ -12,7 +12,19 @@
 }
 
 .toolbar h2 {
+    display: inline-flex;
     margin-left: 4px;
+}
+
+.toolbar h2 span {
+    height: fit-content;
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 400;
+    /* color: white; */
+    background-color: #fcd975;
+    padding: 0.125rem 0.6rem;
+    border-radius: 999px;
 }
 
 .toolbar button {

@@ -49,9 +49,23 @@ export async function deleteArticle(articleId, SERVER_URI) {
         });
 
         if (response.status === 404) return alert("no article");
-        
+
         return;
     } catch (error) {
         console.log(error);
+    }
+}
+
+export async function saveArticle(articleId, containers, SERVER_URI) {
+    try {
+        await fetch(`${SERVER_URI}/api/articles/${articleId}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                content: JSON.stringify(containers)
+            })
+        });
+    } catch (error) {
+        alert(error);
     }
 }

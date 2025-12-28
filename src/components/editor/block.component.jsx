@@ -6,12 +6,14 @@ import { CSS } from "@dnd-kit/utilities";
 import TextareaAutosize from "react-textarea-autosize";
 
 import handleKeyFormatting from "../../../utils/handle-key-formatting.util.js";
+import { scrollToCenter } from "../../../utils/scroll-item-to.util.js";
 
 import styles from "./block.module.css";
 
 import Configurator from "./list-block/configurator.component.jsx";
+import ImageBlock from "./list-block/image-block.component.jsx";
 
-export default function Block({ container, onFlatInput, onAddPoint, onListInput, onFocus, onRemoveBlock, ref }) {
+export default function Block({ container, setContainers, onFlatInput, onAddPoint, onListInput, onFocus, onRemoveBlock, ref }) {
     const { active } = useDndContext();
     const isAnyBlockDragging = !!active;
 
@@ -58,13 +60,16 @@ export default function Block({ container, onFlatInput, onAddPoint, onListInput,
                     )}
                 </div>
 
-                {container.tag !== "ul" && (
+                {(container.tag !== "ul" && container.tag !== "img") && (
                     <TextareaAutosize
                         data-textarea={container.id}
                         minRows={1}
                         onChange={onFlatInput}
-                        onFocus={() => onFocus(container.id)}
-                        onKeyDown={handleKeyFormatting}
+                        onFocus={() => {
+                            onFocus(prev => prev = container.id);
+                            scrollToCenter(container.id);
+                        }}
+                        onKeyDown={event => handleKeyFormatting(event, setContainers)}
                         ref={element => { ref.current[container.id] = element }}
                         value={container.content}
                     />
@@ -76,7 +81,27 @@ export default function Block({ container, onFlatInput, onAddPoint, onListInput,
                         onAddPoint={onAddPoint}
                         onListInput={onListInput}
                         onFocus={onFocus}
+                        setContainers={setContainers}
                         ref={ref}
+                    />
+                )}
+
+                {container.tag === "img" && (
+                    <ImageBlock
+                        container={container}
+                        
+                        
+                        
+                        setContainers={setContainers}
+                        
+
+                        data-textarea={container.id}
+                        
+                        onFlatInput={onFlatInput}
+                        onFocus={() => onFocus(container.id)}
+                        onKeyDown={event => handleKeyFormatting(event, setContainers)}
+                        ref={element => { ref.current[container.id] = element }}
+                        value={container.content}
                     />
                 )}
             </div>

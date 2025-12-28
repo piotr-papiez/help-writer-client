@@ -9,6 +9,17 @@
     box-shadow: 0px 6px 12px 0px #b1b1b1;
 }
 
-.modal::backdrop {
+.copy-modal {
+    display: grid;
+    padding: 0.25rem;
+    background-color: #fff;
+    gap: 0.25rem;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0px 6px 12px 0px #b1b1b1;
+}
+
+.modal::backdrop,
+.copy-modal::backdrop {
     background-color: transparent;
 }

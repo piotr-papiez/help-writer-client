@@ -64,7 +64,11 @@ export function containersToHTML(containers) {
     })
     .join("\n")
 
-  return `${deepLinks}\n${htmlContent}`;
+  if (containers?.length > 0) {
+    return `${deepLinks}\n${htmlContent}`;
+  } else {
+    return null;
+  }
 }
 
 export function listContentToHTML(list) {

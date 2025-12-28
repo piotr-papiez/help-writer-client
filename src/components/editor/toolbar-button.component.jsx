@@ -4,13 +4,13 @@ import handleButtonFormatting from "../../../utils/handle-button-formatting.util
 
 import styles from "./toolbar-button.module.css";
 
-export default function ToolbarButton({ className, content, textareaOnFocusElement, tag }) {
+export default function ToolbarButton({ setContainers, className, content, textareaOnFocusElement, tag }) {
     return (
         <button
             title={tag.title}
             id={`${tag.type}-${tag.letter}`}
             className={styles[className]}
-            onClick={event => handleButtonFormatting(event, textareaOnFocusElement, tag)}
+            onClick={event => handleButtonFormatting(event, textareaOnFocusElement, tag, setContainers)}
         >
             <span className="material-symbols-rounded">{content}</span>
         </button>

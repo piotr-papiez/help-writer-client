@@ -1,4 +1,32 @@
-export default function handleButtonFormatting(event, textareaOnFocusElement, { type, letter }) {
+function updateItem(textarea, setContainers) {
+    setContainers(prev => (
+        prev.map(item => {
+            let updatedItem = item;
+
+            if (item.id === textarea.dataset.textarea) {
+                updatedItem = {
+                    ...updatedItem,
+                    content: textarea.value
+                };
+            }
+
+            if (item.secondLevel) {
+                updatedItem = {
+                    ...updatedItem,
+                    secondLevel: item.secondLevel.map(subItem => (
+                        subItem.id === textarea.dataset.textarea
+                            ? { ...subItem, content: textarea.value }
+                            : subItem
+                    ))
+                };
+            }
+
+            return updatedItem;
+        })
+    ));
+}
+
+export default function handleButtonFormatting(event, textareaOnFocusElement, { type, letter }, setContainers) {
     if (type === "standard") {
         event.preventDefault();
 
@@ -20,6 +48,9 @@ export default function handleButtonFormatting(event, textareaOnFocusElement, { 
         textarea.selectionStart = textarea.selectionEnd = newPosition;
 
         textarea.dispatchEvent(new Event("input", { bubbles: true }));
+
+        updateItem(textarea, setContainers);
+
         textarea.focus();
     }
 
@@ -65,6 +96,9 @@ export default function handleButtonFormatting(event, textareaOnFocusElement, { 
         textarea.selectionStart = textarea.selectionEnd = newPosition;
 
         textarea.dispatchEvent(new Event("input", { bubbles: true }));
+
+        updateItem(textarea, setContainers)
+
         textarea.focus();
     }
 }

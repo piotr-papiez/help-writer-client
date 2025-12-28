@@ -14,17 +14,22 @@ import textToSymbol from "../../../utils/text-to-symbols.util.js";
 import styles from "./editor.module.css";
 
 import ActionButton from "./action-button.component.jsx";
+import ItemButton from "../dashboard/item-button.component.jsx";
 import Toolbar from "./toolbar.component.jsx";
 import Preview from "./preview.component.jsx";
 import Canvas from "./canvas.component.jsx";
+import Dialog from "../dashboard/dialog.component.jsx";
 
 export default function Editor({ articleId, articleTitle, contentString }) {
     const [containers, setContainers] = useState(null);
     const [containerSlot, setContainerSlot] = useState(null);
     const [textareaOnFocusId, setTextareaOnFocusId] = useState(null);
     const [textareaOnFocusElement, setTextareaOnFocusElement] = useState(null);
+    const [openedDialog, setOpenedDialog] = useState(null);
 
     const textareaRefs = useRef({});
+
+    const dialogRef = useRef(null);
 
     useEffect(() => {
         registerCustomElements();
@@ -90,6 +95,7 @@ export default function Editor({ articleId, articleTitle, contentString }) {
         setContainers(prevOrder => {
             const originPosition = getContainerIndex(containers, activeId);
             const newPosition = getContainerIndex(containers, overId);
+            console.log(containers);
 
             return arrayMove(prevOrder, originPosition, newPosition);
         });
@@ -115,7 +121,7 @@ export default function Editor({ articleId, articleTitle, contentString }) {
             } else {
                 newContainers.push(createdContainer);
             }
-            
+
             return newContainers;
         });
 
@@ -130,6 +136,16 @@ export default function Editor({ articleId, articleTitle, contentString }) {
         })
     );
 
+    function openDialog(articleId, content) {
+        setOpenedDialog({ articleId, content });
+        dialogRef.current.showModal();
+    }
+
+    function closeDialog() {
+        dialogRef.current.close();
+        setOpenedDialog(null);
+    }
+
     const htmlContent = containersToHTML(containers);
 
     return (
@@ -142,8 +158,16 @@ export default function Editor({ articleId, articleTitle, contentString }) {
             >
                 <div className={styles.editor}>
                     <div className={styles.header}>
-                        <h2>{articleTitle}</h2>
-
+                        <div className={styles["back-and-title-wrapper"]}>
+                            <ItemButton
+                                className={styles["back-button"]}
+                                content="arrow_back"
+                                title="Wstecz"
+                                openDialog={() => openDialog(articleId, "save")}
+                                articleId={articleId}
+                            />
+                            <h2>{articleTitle}</h2>
+                        </div>
                         <div className={styles["header-buttons-wrapper"]}>
                             <ActionButton
                                 content="Kopiuj HTML"
@@ -158,25 +182,39 @@ export default function Editor({ articleId, articleTitle, contentString }) {
 
                     </div>
                     <Toolbar
-                        containers={containers}
+                        setContainers={setContainers}
                         textareaOnFocusElement={textareaOnFocusElement}
                         handleCreateContainer={handleCreateContainer}
                     />
                     <div className={styles["editor-contents"]}>
-                        <Preview htmlContent={htmlContent} />
-                        <Canvas
-                            containers={containers}
-                            containerSlot={containerSlot}
-                            onFlatInput={handleFlatInput}
-                            onAddPoint={addListPoint}
-                            onListInput={handleListInput}
-                            onFocus={setTextareaOnFocusId}
-                            onRemoveBlock={handleRemoveBlock}
-                            ref={textareaRefs}
-                        />
+                        {htmlContent ? (
+                            <>
+                            <Preview htmlContent={htmlContent} />
+                            <Canvas
+                                containers={containers}
+                                setContainers={setContainers}
+                                containerSlot={containerSlot}
+                                onFlatInput={handleFlatInput}
+                                onAddPoint={addListPoint}
+                                onListInput={handleListInput}
+                                onFocus={setTextareaOnFocusId}
+                                onRemoveBlock={handleRemoveBlock}
+                                ref={textareaRefs}
+                            />
+                            </>
+                        ) : (
+                            <p className={styles["hint-for-empty"]}>Dodaj pierwszy blok</p>
+                        )}
                     </div>
                 </div>
             </DndContext>
+
+            <Dialog
+                dialogType={openedDialog}
+                containers={containers}
+                onClose={closeDialog}
+                ref={dialogRef}
+            />
         </>
     );
 }

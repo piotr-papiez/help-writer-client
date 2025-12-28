@@ -10,6 +10,11 @@
     transition: all 0.1s ease-in-out;
 }
 
+.button-standard-format span,
+.button-specific-format span {
+    font-size: 1.2rem;
+}
+
 .button-standard-format:hover {
     background-color: #ededed;
 }

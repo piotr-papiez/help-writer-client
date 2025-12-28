@@ -11,7 +11,7 @@ import styles from "./toolbar.module.css"
 
 import {
     DRAGGABLE_ELEMENTS_BUTTONS, STANDARD_FORMAT_BUTTONS,
-    COLOR_FORMAT_BUTTONS, SPECIFIC_FORMAT_BUTTONS
+    COLOR_FORMAT_BUTTONS, SPECIFIC_FORMAT_BUTTONS, ELEMENTS_BUTTONS
 } from "@/data/toolbar-buttons.data";
 
 import DraggableToolbarButton from "./draggable-toolbar-button.component.jsx";
@@ -19,15 +19,15 @@ import ToolbarButton from "./toolbar-button.component.jsx";
 import ColorToolbarButton from "./color-toolbar-button.component.jsx";
 import Modal from "./color-modal/modal.component.jsx";
 
-export default function Toolbar({ containers, textareaOnFocusElement, handleCreateContainer }) {
+export default function Toolbar({ setContainers, textareaOnFocusElement, handleCreateContainer }) {
     const [activeColorButton, setActiveColorButton] = useState(null);
     const [fontColorPaletteIsOpen, setFontColorPaletteIsOpen] = useState(false);
 
     const { refs, floatingStyles, context } = useFloating({
         open: fontColorPaletteIsOpen,
         onOpenChange: setFontColorPaletteIsOpen,
-        placement: "bottom",
-        middleware: [offset(8), flip(), shift({ padding: 8 })],
+        placement: "bottom-start",
+        middleware: [offset(4), flip(), shift({ padding: 8 })],
         whileElementsMounted: autoUpdate
     });
 
@@ -66,6 +66,7 @@ export default function Toolbar({ containers, textareaOnFocusElement, handleCrea
                             title: button.title
                         }}
                         textareaOnFocusElement={textareaOnFocusElement}
+                        setContainers={setContainers}
                     />
                 ))}
 
@@ -94,6 +95,7 @@ export default function Toolbar({ containers, textareaOnFocusElement, handleCrea
                             setFloating={refs.setFloating}
                             floatingStyles={floatingStyles}
                             textareaOnFocusElement={textareaOnFocusElement}
+                            setContainers={setContainers}
                             getFloatingProps={getFloatingProps}
                             activeColorButton={activeColorButton}
                             setFontColorPaletteIsOpen={setFontColorPaletteIsOpen}
@@ -114,7 +116,28 @@ export default function Toolbar({ containers, textareaOnFocusElement, handleCrea
                             title: button.title
                         }}
                         textareaOnFocusElement={textareaOnFocusElement}
+                        setContainers={setContainers}
                     />
+                ))}
+
+                <hr className={styles.hr} />
+
+                {ELEMENTS_BUTTONS.map(button => (
+                    <ColorToolbarButton
+                    key={`${button.type}-${button.content}`}
+                    className="button-color-format"
+                    tag={{
+                        type: button.type,
+                        content: button.content,
+                        title: button.title
+                    }}
+                    textareaOnFocusElement={textareaOnFocusElement}
+                    setContainers={setContainers}
+                    setReference={refs.setReference}
+                    getReferenceProps={getReferenceProps}
+                    setActiveColorButton={setActiveColorButton}
+                    setFontColorPaletteIsOpen={setFontColorPaletteIsOpen}
+                />
                 ))}
             </div>
         </div>
