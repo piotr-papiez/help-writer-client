@@ -30,7 +30,7 @@ export function containersToHTML(containers) {
   const htmlContent = containers
     ?.map(item => {
       if (["info", "warning", "release_alert"].includes(item.icon)) {
-        return `<${item.tag} id="${item.id}" class=${item.icon}>${item.content}</${item.tag}>`;
+        return `<${item.tag} id="${item.id}" class="${item.icon}">${item.content}</${item.tag}>`;
       }
 
       if (item.tag === "img") {
