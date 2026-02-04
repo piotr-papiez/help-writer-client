@@ -39,6 +39,8 @@ export default function Dashboard({ articlesList, handleDeleteArticle }) {
                 />
             </div>
 
+            {articlesList.length === 0 && <p>Uruchamiam serwer. Daj mi chwilkę…</p>}
+            
             <div className={styles["articles-list"]}>
                 {articlesList.length > 0 && articlesList.map(article => (
                     <div
