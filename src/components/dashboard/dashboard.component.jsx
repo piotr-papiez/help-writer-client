@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, Suspense } from "react";
+import { useState, useRef } from "react";
 
 import { formatDate } from "../../../utils/format-date.util.js";
 
@@ -39,42 +39,40 @@ export default function Dashboard({ articlesList, handleDeleteArticle }) {
                 />
             </div>
 
-            <Suspense fallback={<p>Wczytuję artykuły…</p>}>
-                <div className={styles["articles-list"]}>
-                    {articlesList.length > 0 && articlesList.map(article => (
-                        <div
-                            key={article._id}
-                            className={styles["article-item"]}
-                        >
-                            <div className={styles["article-info"]}>
-                                <a href={`/edit/${article._id}`}><h3>{article.title}</h3></a>
-                                <p>Utworzony: {formatDate(article.creationDate)}</p>
-                                <p>Ostatnio edytowany: {formatDate(article.lastModificationDate)}</p>
-                            </div>
-
-                            <div className={styles["article-actions"]}>
-                                <ItemButton
-                                    content="edit"
-                                    title="Edytuj"
-                                    articleId={article._id}
-                                />
-                                <ItemButton
-                                    content="content_copy"
-                                    title="Kopiuj"
-                                    openDialog={openDialog}
-                                    articleId={article._id}
-                                />
-                                <ItemButton
-                                    content="delete"
-                                    title="Usuń"
-                                    openDialog={openDialog}
-                                    articleId={article._id}
-                                />
-                            </div>
+            <div className={styles["articles-list"]}>
+                {articlesList.length > 0 && articlesList.map(article => (
+                    <div
+                        key={article._id}
+                        className={styles["article-item"]}
+                    >
+                        <div className={styles["article-info"]}>
+                            <a href={`/edit/${article._id}`}><h3>{article.title}</h3></a>
+                            <p>Utworzony: {formatDate(article.creationDate)}</p>
+                            <p>Ostatnio edytowany: {formatDate(article.lastModificationDate)}</p>
                         </div>
-                    ))}
-                </div>
-            </Suspense>
+
+                        <div className={styles["article-actions"]}>
+                            <ItemButton
+                                content="edit"
+                                title="Edytuj"
+                                articleId={article._id}
+                            />
+                            <ItemButton
+                                content="content_copy"
+                                title="Kopiuj"
+                                openDialog={openDialog}
+                                articleId={article._id}
+                            />
+                            <ItemButton
+                                content="delete"
+                                title="Usuń"
+                                openDialog={openDialog}
+                                articleId={article._id}
+                            />
+                        </div>
+                    </div>
+                ))}
+            </div>
 
             <Dialog
                 dialogType={openedDialog}
